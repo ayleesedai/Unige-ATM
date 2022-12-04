@@ -103,7 +103,7 @@ public class Withdrawal extends Transaction
          screen.displayMessageLine( "2 - $40" );
          screen.displayMessageLine( "3 - $60" );
          screen.displayMessageLine( "4 - $100" );
-         screen.displayMessageLine( "5 - $200" );
+         screen.displayMessageLine( "5 - Custom Amount" );
          screen.displayMessageLine( "6 - Cancel transaction" );
          screen.displayMessage( "\nChoose a withdrawal amount: " );
 
@@ -117,7 +117,8 @@ public class Withdrawal extends Transaction
             case 3: // corresponding amount from amounts array
             case 4:
             case 5:
-               userChoice = amounts[ input ]; // save user's choice
+               screen.displayMessageLine( "Please insert a custom amount ($):" );
+               // userChoice = amounts[ input ]; // save user's choice
                break;       
             case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
