@@ -117,8 +117,10 @@ public class Withdrawal extends Transaction
             case 3: // corresponding amount from amounts array
             case 4:
             case 5:
-               screen.displayMessageLine( "Please insert a custom amount ($):" );
+               screen.displayMessage( "Please insert a custom amount ($): " );
+               int customAmount = keypad.getInput(); // get user input through keypad
                // userChoice = amounts[ input ]; // save user's choice
+               userChoice = customAmount;
                break;       
             case CANCELED: // the user chose to cancel
                userChoice = CANCELED; // save user's choice
