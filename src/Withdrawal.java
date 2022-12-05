@@ -39,8 +39,8 @@ public class Withdrawal extends Transaction
          // obtain a chosen withdrawal amount from the user 
          amount = displayMenuOfAmounts();
          
-         // check whether user chose a withdrawal amount or canceled
-         if ( amount != CANCELED )
+         // check whether user chose a valid withdrawal amount
+         if ( amount > 0 )
          {
             // get available balance of account involved
             availableBalance = 
@@ -87,7 +87,7 @@ public class Withdrawal extends Transaction
    // return the chosen amount or 0 if the user chooses to cancel
    private int displayMenuOfAmounts()
    {
-      int userChoice = 0; // local variable to store return value
+      int userAmount = 0; // local variable to store return value
 
       Screen screen = getScreen(); // get screen reference
       
@@ -95,7 +95,7 @@ public class Withdrawal extends Transaction
       int amounts[] = { 0, 20, 40, 60, 100, 200 };
 
       // loop while no valid choice has been made
-      while ( userChoice == 0 )
+      while ( userAmount == 0 )
       {
          // display the menu
          screen.displayMessageLine( "\nWithdrawal Menu:" );
@@ -116,16 +116,16 @@ public class Withdrawal extends Transaction
             case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
             case 3: // corresponding amount from amounts array
             case 4:
-               userChoice = amounts[ input ]; // save user's choice
+               userAmount = amounts[ input ]; // save user's choice
                break;
             case 5:
                screen.displayMessage( "\nPlease insert the desired amount: " );
                int customAmount = keypad.getInput(); // get user input through keypad
-               // userChoice = amounts[ input ]; // save user's choice
-               userChoice = customAmount;
+               // userAmount = amounts[ input ]; // save user's choice
+               userAmount = customAmount;
                break;       
             case CANCELED: // the user chose to cancel
-               userChoice = CANCELED; // save user's choice
+               userAmount = -1; // return an invalid amount
                break;
             default: // the user did not enter a value from 1-6
                screen.displayMessageLine( 
@@ -133,7 +133,7 @@ public class Withdrawal extends Transaction
          } // end switch
       } // end while
 
-      return userChoice; // return withdrawal amount or CANCELED
+      return userAmount; // return withdrawal amount or CANCELED
    } // end method displayMenuOfAmounts
 } // end class Withdrawal
 
