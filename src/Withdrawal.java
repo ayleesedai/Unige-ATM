@@ -39,8 +39,8 @@ public class Withdrawal extends Transaction
          // obtain a chosen withdrawal amount from the user 
          amount = displayMenuOfAmounts();
          
-         // check whether user chose a withdrawal amount or canceled
-         if ( amount != CANCELED )
+         // check whether user chose a withdrawal valid amount
+         if ( amount >= 0 )
          {
             // get available balance of account involved
             availableBalance = 
@@ -124,7 +124,7 @@ public class Withdrawal extends Transaction
                userChoice = customAmount;
                break;       
             case CANCELED: // the user chose to cancel
-               userChoice = CANCELED; // save user's choice
+               userChoice = -1; // save user's choice
                break;
             default: // the user did not enter a value from 1-6
                screen.displayMessageLine( 
