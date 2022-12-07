@@ -121,7 +121,6 @@ public class Withdrawal extends Transaction
             case 5:
                screen.displayMessage( "\nHow much do you want to withdraw? " );
                int customAmount = keypad.getInput(); // get user input through keypad
-               // userChoice = amounts[ input ]; // save user's choice
                userChoice = customAmount;
                break;       
             case CANCELED: // the user chose to cancel
