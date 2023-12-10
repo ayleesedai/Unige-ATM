@@ -23,3 +23,8 @@ Avviando il main() della classe ATMCaseStudy, viene richiesto l’inserimento de
 - Numero di conto = 98765, PIN = 56789
 
 ---------------------------------------------------------------------------
+
+RELEASE NOTES
+
+12-12-2023
+- Add custom withdrawl
