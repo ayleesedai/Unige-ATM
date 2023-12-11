@@ -39,8 +39,8 @@ public class Withdrawal extends Transaction
          // obtain a chosen withdrawal amount from the user 
          amount = displayMenuOfAmounts();
          
-         // check whether user chose a withdrawal amount or canceled
-         if ( amount != CANCELED )
+         // check whether user chose a withdrawal valid amount
+         if ( amount >= 0 )
          {
             // get available balance of account involved
             availableBalance = 
@@ -103,7 +103,7 @@ public class Withdrawal extends Transaction
          screen.displayMessageLine( "2 - $40" );
          screen.displayMessageLine( "3 - $60" );
          screen.displayMessageLine( "4 - $100" );
-         screen.displayMessageLine( "5 - $200" );
+         screen.displayMessageLine( "5 - Choose another amount" );
          screen.displayMessageLine( "6 - Cancel transaction" );
          screen.displayMessage( "\nChoose a withdrawal amount: " );
 
@@ -116,11 +116,15 @@ public class Withdrawal extends Transaction
             case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
             case 3: // corresponding amount from amounts array
             case 4:
-            case 5:
                userChoice = amounts[ input ]; // save user's choice
                break;       
+            case 5:
+               screen.displayMessage( "\nHow much do you want to withdraw? " );
+               int customAmount = keypad.getInput(); // get user input through keypad
+               userChoice = customAmount;
+               break;       
             case CANCELED: // the user chose to cancel
-               userChoice = CANCELED; // save user's choice
+               userChoice = -1; // save user's choice
                break;
             default: // the user did not enter a value from 1-6
                screen.displayMessageLine( 
