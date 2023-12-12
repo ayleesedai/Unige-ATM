@@ -116,6 +116,8 @@ public class Withdrawal extends Transaction
             case 2: // (i.e., chose option 1, 2, 3, 4 or 5), return the
             case 3: // corresponding amount from amounts array
             case 4:
+               userChoice = amounts[ input ]; // save user's choice
+               break;
             case 5:
                // userChoice = amounts[ input ]; // save user's choice
                screen.displayMessage("\nHow much do you want to withdraw? ");
